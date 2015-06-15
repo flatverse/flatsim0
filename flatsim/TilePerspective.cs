@@ -7,15 +7,17 @@ namespace flatsim
     {
         public class TileDrawInfo
         {
+            public Direction facing;
             public Vector2 pos;
             public Vector2 scale;
             public float depth;
             public int depthDigits;
 
-            public TileDrawInfo(Vector2 pos, float depth, int depthDigits)
+            public TileDrawInfo(Direction facing, Vector2 pos, Vector2 scale, float depth, int depthDigits)
             {
+                this.facing = facing;
                 this.pos = pos;
-                scale = new Vector2(1, 1);
+                this.scale = scale;
                 this.depth = depth;
                 this.depthDigits = depthDigits;
             }
