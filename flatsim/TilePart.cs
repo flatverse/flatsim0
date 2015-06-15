@@ -4,6 +4,9 @@ namespace flatsim
 {
     public enum TilePart
     {
-        STRUCTURE, SURFACE, LEFTFACE, RIGHTFACE
+        STRUCTURE = 3,
+        SURFACE = 2,
+        LEFTFACE = 0,
+        RIGHTFACE = 1
     }
 }

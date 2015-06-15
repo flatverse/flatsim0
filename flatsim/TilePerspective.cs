@@ -75,6 +75,18 @@ namespace flatsim
             facing = Direction.WESTNORTH;
         }
 
+        public virtual TileDrawInfo getTileDrawInfo(int coordNS, int coordWE, float height, TilePart part)
+        {
+            Direction facing = getDirectionFacing();
+            Vector2 pxPos = getTilePixelPosition(coordNS, coordWE, height);
+            Vector2 scale = getScale();
+            float depth = getTileDepth(0, coordNS, coordWE, part);
+            int digitCount = getDepthDigitsNeeded(0);
+            TileDrawInfo tdi = new TileDrawInfo(facing, pxPos, scale, depth, digitCount);
+
+            return tdi;
+        }
+
         public virtual Direction getDirectionFacing()
         {
             return facing;
@@ -82,6 +94,7 @@ namespace flatsim
 
         public virtual Vector2 getTilePixelPosition(int coordNS, int coordWE, float height)
         {
+            // TODO take scale into account
             float halfWidth = tilePixelWidth / 2;
             float halfHeight = tilePixelHeight / 2;
             Vector2 centerCoord = getCenterCoord();
@@ -95,7 +108,34 @@ namespace flatsim
             yAdjust *= halfHeight;
 
             Vector2 pxPos = new Vector2(position.X + xAdjust, position.Y + yAdjust);
+            pxPos.Y += height * tilePixelAltitudeUnit;
             return pxPos;
+        }
+
+        public virtual Vector2 getScale()
+        {
+            return scale;
+        }
+
+        public virtual float getTileDepth(int extraDigits, int coordNS, int coordWE, TilePart part)
+        {
+            int digitsNeeded = getDepthDigitsNeeded(extraDigits);
+
+            Tuple<float, float> dist = getTileDistance(getTopCoord(), new Vector2(coordNS, coordWE));
+            int drawOrder = (int)dist.Item2 * getTilesTLtoBR();
+            drawOrder += (int)dist.Item1;
+
+            float depth = Utils.shiftRight(drawOrder, digitsNeeded - 1);
+            depth += Utils.shiftRight((int)part, digitsNeeded);
+            
+            return depth;
+        }
+
+        public virtual int getDepthDigitsNeeded(int extraDigits)
+        {
+            int digitsNeeded = Utils.digitCount(tilesNS * tilesWE);
+            digitsNeeded += extraDigits + 1; // the extra digit is for the TilePart
+            return digitsNeeded;
         }
 
         /*
@@ -107,6 +147,47 @@ namespace flatsim
             //if (facing == Direction.WESTNORTH || facing == Direction.EASTSOUTH)
             // else
             return new Vector2((float)tilesNS / 2.0f, (float)tilesWE / 2.0f);
+        }
+
+        public virtual Vector2 getTopCoord()
+        {
+            switch (facing)
+            {
+                case Direction.WESTNORTH:
+                    return new Vector2(0, 0);
+                case Direction.SOUTHWEST:
+                    return new Vector2(tilesNS - 1, 0);
+                case Direction.EASTSOUTH:
+                    return new Vector2(tilesNS - 1, tilesWE - 1);
+                case Direction.NORTHEAST:
+                    return new Vector2(0, tilesWE - 1);
+            }
+
+            return new Vector2(float.NaN);
+        }
+
+        public virtual int getTilesTLtoBR()
+        {
+            if (facing == Direction.WESTNORTH || facing == Direction.EASTSOUTH)
+            {
+                return tilesWE;
+            }
+            else
+            {
+                return tilesNS;
+            }
+        }
+
+        public virtual int getTilesBLtoTR()
+        {
+            if (facing == Direction.WESTNORTH || facing == Direction.EASTSOUTH)
+            {
+                return tilesNS;
+            }
+            else
+            {
+                return tilesWE;
+            }
         }
 
         public virtual Tuple<float, float> getTileDistance(Vector2 from, Vector2 to)
