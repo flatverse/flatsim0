@@ -1,0 +1,7 @@
+﻿Make a way to draw a Tile
+* maybe a TileDrawPack
+* maybe a TileDrawable
+
+TilePerspective
+* account for scale in .getTilePixelPosition
+* make sure .getCenterCoord is correct
