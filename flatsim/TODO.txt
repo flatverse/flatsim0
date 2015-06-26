@@ -1,6 +1,5 @@
-﻿Make a way to draw a Tile
-* maybe a TileDrawPack
-* maybe a TileDrawable
+﻿TileDrawablePack
+* make something that implments this
 
 TilePerspective
 * account for scale in .getTilePixelPosition
