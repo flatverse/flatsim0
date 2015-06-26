@@ -78,7 +78,7 @@ namespace flatsim
         public virtual TileDrawInfo getTileDrawInfo(int coordNS, int coordWE, float height, TilePart part)
         {
             Direction facing = getDirectionFacing();
-            Vector2 pxPos = getTilePixelPosition(coordNS, coordWE, height);
+            Vector2 pxPos = getTilePixelPosition(coordNS, coordWE, height, part);
             Vector2 scale = getScale();
             float depth = getTileDepth(0, coordNS, coordWE, part);
             int digitCount = getDepthDigitsNeeded(0);
@@ -92,7 +92,8 @@ namespace flatsim
             return facing;
         }
 
-        public virtual Vector2 getTilePixelPosition(int coordNS, int coordWE, float height)
+        // TODO use 'part'
+        public virtual Vector2 getTilePixelPosition(int coordNS, int coordWE, float height, TilePart part)
         {
             // TODO take scale into account
             float halfWidth = tilePixelWidth / 2;
@@ -104,8 +105,10 @@ namespace flatsim
             // item2 is rel. tile coord bottom left to top right
             float xAdjust = dist.Item1 + dist.Item2;
             xAdjust *= halfWidth;
+            xAdjust += part.horizontalTileOffset() * tilePixelWidth;
             float yAdjust = dist.Item2 + (-dist.Item1);
             yAdjust *= halfHeight;
+            yAdjust += part.verticalTileOffset() * tilePixelAltitudeUnit; // this is a bit heavy handed might want to remove
 
             Vector2 pxPos = new Vector2(position.X + xAdjust, position.Y + yAdjust);
             pxPos.Y += height * tilePixelAltitudeUnit;
