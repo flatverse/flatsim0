@@ -1,4 +1,6 @@
-﻿TileDrawablePack
+﻿* Account for corner heights!!! (tile slopes)
+
+TileDrawablePack
 * make something that implments this
 
 TilePerspective
