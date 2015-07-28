@@ -8,14 +8,16 @@ namespace flatsim
         public class TileDrawInfo
         {
             public Direction facing;
+            public TilePart tilePart;
             public Vector2 pos;
             public Vector2 scale;
             public float depth;
             public int depthDigits;
 
-            public TileDrawInfo(Direction facing, Vector2 pos, Vector2 scale, float depth, int depthDigits)
+            public TileDrawInfo(Direction facing, TilePart tilePart, Vector2 pos, Vector2 scale, float depth, int depthDigits)
             {
                 this.facing = facing;
+                this.tilePart = tilePart;
                 this.pos = pos;
                 this.scale = scale;
                 this.depth = depth;
@@ -82,7 +84,7 @@ namespace flatsim
             Vector2 scale = getScale();
             float depth = getTileDepth(0, coordNS, coordWE, part);
             int digitCount = getDepthDigitsNeeded(0);
-            TileDrawInfo tdi = new TileDrawInfo(facing, pxPos, scale, depth, digitCount);
+            TileDrawInfo tdi = new TileDrawInfo(facing, part, pxPos, scale, depth, digitCount);
 
             return tdi;
         }

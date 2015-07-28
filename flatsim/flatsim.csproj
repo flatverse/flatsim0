@@ -50,6 +50,7 @@
     <Compile Include="TilePart.cs" />
     <Compile Include="TilePerspective.cs" />
     <Compile Include="TileTexture.cs" />
+    <Compile Include="TileTextures\SimpleTileTexture.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

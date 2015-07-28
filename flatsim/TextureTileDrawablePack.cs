@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace flatsim
 {
@@ -13,24 +14,24 @@ namespace flatsim
             this.textures = new Dictionary<TilePart, TileTexture>();
         }
 
-        public override void drawStructure(TilePerspective.TileDrawInfo drawInfo)
+        public override void drawStructure(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
-            textures[TilePart.STRUCTURE].draw(drawInfo);
+            textures[TilePart.STRUCTURE].draw(drawInfo, spriteBatch);
         }
 
-        public override void drawSurface(TilePerspective.TileDrawInfo drawInfo)
+        public override void drawSurface(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
-            textures[TilePart.SURFACE].draw(drawInfo);
+            textures[TilePart.SURFACE].draw(drawInfo, spriteBatch);
         }
 
-        public override void drawLeftFace(TilePerspective.TileDrawInfo drawInfo)
+        public override void drawLeftFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
-            textures[TilePart.LEFTFACE].draw(drawInfo);
+            textures[TilePart.LEFTFACE].draw(drawInfo, spriteBatch);
         }
 
-        public override void drawRightFace(TilePerspective.TileDrawInfo drawInfo)
+        public override void drawRightFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
-            textures[TilePart.RIGHTFACE].draw(drawInfo);
+            textures[TilePart.RIGHTFACE].draw(drawInfo, spriteBatch);
         }
     }
 }

@@ -1,30 +1,31 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace flatsim
 {
     public abstract class TileDrawablePack
     {
-        public abstract void drawStructure(TilePerspective.TileDrawInfo drawInfo);
-        public abstract void drawSurface(TilePerspective.TileDrawInfo drawInfo);
-        public abstract void drawLeftFace(TilePerspective.TileDrawInfo drawInfo);
-        public abstract void drawRightFace(TilePerspective.TileDrawInfo drawInfo);
+        public abstract void drawStructure(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch);
+        public abstract void drawSurface(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch);
+        public abstract void drawLeftFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch);
+        public abstract void drawRightFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch);
 
-        public virtual void draw(TilePerspective.TileDrawInfo drawInfo, TilePart part)
+        public virtual void draw(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
-            switch (part)
+            switch (drawInfo.tilePart)
             {
                 case TilePart.STRUCTURE:
-                    drawStructure(drawInfo);
+                    drawStructure(drawInfo, spriteBatch);
                     break;
                 case TilePart.SURFACE:
-                    drawSurface(drawInfo);
+                    drawSurface(drawInfo, spriteBatch);
                     break;
                 case TilePart.LEFTFACE:
-                    drawLeftFace(drawInfo);
+                    drawLeftFace(drawInfo, spriteBatch);
                     break;
                 case TilePart.RIGHTFACE:
-                    drawRightFace(drawInfo);
+                    drawRightFace(drawInfo, spriteBatch);
                     break;
             }
         }
