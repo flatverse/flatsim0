@@ -1,7 +1,6 @@
 ﻿* Account for corner heights!!! (tile slopes)
 
-TileTexture
-* make something that implements this. A simple tile that shows the same assets in any direction will suffice.
+* Make a Tile
 
 TilePerspective
 * account for scale in .getTilePixelPosition
