@@ -12,9 +12,15 @@ namespace flatsim
         public Drawable leftFace;
         public Drawable rightFace;
 
+        float heightOffset = 0;
+        float tileHeight = 0;
+
         public SimpleTileTexture()
         {
             structures = new List<Drawable>();
+
+            heightOffset = 0;
+            tileHeight = 0;
         }
 
         public void draw(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
@@ -36,6 +42,26 @@ namespace flatsim
                 case TilePart.RIGHTFACE:
                     surface.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
                     break;
+            }
+        }
+
+        public float[] getHeightRange(float minHeight, float maxHeight)
+        {
+            if (tileHeight == 0)
+            {
+                return new float[] {maxHeight + heightOffset};
+            }
+            else
+            {
+                int tileCnt = (int)Math.Ceiling((maxHeight - minHeight) / tileHeight);
+                float[] heights = new float[tileCnt];
+                float curHeight = maxHeight - (tileHeight / 2);
+                for (int i = 0; i < tileCnt; i++)
+                {
+                    heights[i] = curHeight;
+                    curHeight += tileHeight;
+                }
+                return heights;
             }
         }
     }

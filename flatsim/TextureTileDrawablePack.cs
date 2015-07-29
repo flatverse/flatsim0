@@ -33,5 +33,26 @@ namespace flatsim
         {
             textures[TilePart.RIGHTFACE].draw(drawInfo, spriteBatch);
         }
+
+        public override float[] getHeightRangeStructure(float minHeight, float maxHeight)
+        {
+            return textures[TilePart.STRUCTURE].getHeightRange(minHeight, maxHeight);
+        }
+
+        public override float[] getHeightRangeSurface(float minHeight, float maxHeight)
+        {
+            return textures[TilePart.SURFACE].getHeightRange(minHeight, maxHeight);
+        }
+        
+        public override float[] getHeightRangeLeftFace(float minHeight, float maxHeight)
+        {
+            return textures[TilePart.LEFTFACE].getHeightRange(minHeight, maxHeight);
+        }
+        
+        public override float[] getHeightRangeRightFace(float minHeight, float maxHeight)
+        {
+            return textures[TilePart.RIGHTFACE].getHeightRange(minHeight, maxHeight);
+        }
+        
     }
 }
