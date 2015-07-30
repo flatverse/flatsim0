@@ -1,6 +1,13 @@
 ﻿* Account for corner heights!!! (tile slopes)
+* have some sort of draw mode system for easy map wide "swapping" of drawable packs
 
-* Make a Tile
+* make a Tile that aggregates TileSection
+
+TileSection
+* add support for an onUpdate callback
+
+TileDrawablePack
+* add an update so that animated drawables can be updated
 
 TilePerspective
 * account for scale in .getTilePixelPosition
