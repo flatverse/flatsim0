@@ -46,6 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\TestMGSetup.cs" />
     <Compile Include="TextureTileDrawablePack.cs" />
+    <Compile Include="Tile.cs" />
     <Compile Include="TileSection.cs" />
     <Compile Include="TileDrawablePack.cs" />
     <Compile Include="TilePart.cs" />

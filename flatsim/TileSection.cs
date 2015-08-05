@@ -16,7 +16,7 @@ namespace flatsim
             this.drawablePack = drawablePack;
         }
 
-        public void update()
+        public void update(int timeElapsedMillis)
         {
             // TODO update drawablePack
         }

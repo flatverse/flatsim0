@@ -1,8 +1,6 @@
 ﻿* Account for corner heights!!! (tile slopes)
 * have some sort of draw mode system for easy map wide "swapping" of drawable packs
 
-* make a Tile that aggregates TileSection
-
 TilePerspective
 * expose a depth shift of some sort maybe through a field that defaults to 2 or something
 
