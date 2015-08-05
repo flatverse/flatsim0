@@ -16,12 +16,12 @@ namespace flatsim
             this.drawablePack = drawablePack;
         }
 
-        public void update(int timeElapsedMillis)
+        public virtual void update(int timeElapsedMillis)
         {
             // TODO update drawablePack
         }
 
-        public void draw(int coordNS, int coordWE, TilePart tilePart, TilePerspective perspective, SpriteBatch spriteBatch)
+        public virtual void draw(int coordNS, int coordWE, TilePart tilePart, TilePerspective perspective, SpriteBatch spriteBatch)
         {
             float[] heights = drawablePack.getHeightRange(tilePart, minHeight, maxHeight);
             TilePerspective.TileDrawInfo tdi;

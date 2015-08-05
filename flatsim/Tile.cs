@@ -19,7 +19,7 @@ namespace flatsim
             tileSections = new List<TileSection>();
         }
 
-        public void update(int timeElapsedMillis)
+        public virtual void update(int timeElapsedMillis)
         {
             foreach (TileSection tile in tileSections)
             {
@@ -27,7 +27,7 @@ namespace flatsim
             }
         }
 
-        public void draw(TilePart tilePart, TilePerspective perspective, SpriteBatch spriteBatch)
+        public virtual void draw(TilePart tilePart, TilePerspective perspective, SpriteBatch spriteBatch)
         {
             foreach (TileSection tile in tileSections)
             {
