@@ -3,6 +3,9 @@
 
 * make a Tile that aggregates TileSection
 
+TilePerspective
+* expose a depth shift of some sort maybe through a field that defaults to 2 or something
+
 TileSection
 * add support for an onUpdate callback
 
