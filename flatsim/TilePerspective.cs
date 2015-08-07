@@ -83,7 +83,7 @@ namespace flatsim
             Vector2 pxPos = getTilePixelPosition(coordNS, coordWE, height, part);
             Vector2 scale = getScale();
             float depth = getTileDepth(0, coordNS, coordWE, part);
-            int digitCount = getDepthDigitsNeeded(0);
+            int digitCount = getDepthDigitsNeeded(depthShift);
             TileDrawInfo tdi = new TileDrawInfo(facing, part, pxPos, scale, depth, digitCount);
 
             return tdi;
