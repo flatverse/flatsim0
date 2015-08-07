@@ -23,6 +23,22 @@ namespace flatsim
             tileHeight = 0;
         }
 
+        public virtual void update(TilePart part, int ellapsedMillis)
+        {
+            if (part == TilePart.STRUCTURE)
+            {
+                foreach (Drawable dbl in structures)
+                {
+                    dbl.update();
+                }
+            }
+            else
+            {
+                Drawable dbl = getDrawable(part, -1);
+                dbl.update();
+            }
+        }
+
         public void draw(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
             switch (drawInfo.tilePart)
@@ -63,6 +79,32 @@ namespace flatsim
                 }
                 return heights;
             }
+        }
+
+        /*
+         * helpers
+         */
+        /// <summary>
+        /// returns the drawable based on the TilePart provided and
+        /// the structure index where applicable.
+        /// </summary>
+        /// <param name="part">Specifies which drawable to return</param>
+        /// <param name="structureIndex">Only used when 'part' is STRUCTURE</param>
+        /// <returns></returns>
+        public virtual Drawable getDrawable(TilePart part, int structureIndex)
+        {
+            switch (part)
+            {
+                case TilePart.STRUCTURE:
+                    return structures[structureIndex];
+                case TilePart.SURFACE:
+                    return surface;
+                case TilePart.LEFTFACE:
+                    return leftFace;
+                case TilePart.RIGHTFACE:
+                    return rightFace;
+            }
+            return null;
         }
     }
 }

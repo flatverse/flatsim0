@@ -14,6 +14,15 @@ namespace flatsim
             this.textures = new Dictionary<TilePart, TileTexture>();
         }
 
+        public override void update(int ellapsedMillis)
+        {
+            foreach (string sPart in Enum.GetNames(typeof(TilePart)))
+            {
+                TilePart part = (TilePart)Enum.Parse(typeof(TilePart), sPart);
+                textures[part].update(part, ellapsedMillis);
+            }
+        }
+
         public override void drawStructure(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
             textures[TilePart.STRUCTURE].draw(drawInfo, spriteBatch);

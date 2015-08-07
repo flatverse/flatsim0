@@ -1,13 +1,13 @@
 ﻿* have some sort of draw mode system for easy map wide "swapping" of drawable packs
 
+Drawable
+* add a ellapsedMillis parameter to update.
+
 TilePerspective
 * Add support for slopes through some sort of add on class
 
 TileSection
 * add support for an onUpdate callback
-
-TileDrawablePack
-* add an update so that animated drawables can be updated
 
 TilePerspective
 * account for scale in .getTilePixelPosition
