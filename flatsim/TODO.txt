@@ -13,7 +13,7 @@ TileMap
 * update and especially draw based on direction facing
 
 Tile
-* maybe get rid of coordNS and coordWE and have those provided from the TileMap
+* add way to add/remove tile sections.
 
 TileSection
 * add support for an onUpdate callback

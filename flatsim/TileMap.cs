@@ -29,7 +29,7 @@ namespace flatsim
             {
                 for (int we = 0; we < tilesWE; we++)
                 {
-                    tiles[ns, we] = new Tile(ns, we);
+                    tiles[ns, we] = new Tile();
                 }
             }
         }
@@ -40,7 +40,7 @@ namespace flatsim
             {
                 for (int we = 0; we < tiles.GetLength(1); we++)
                 {
-                    tiles[ns, we].update(elapsedMillis);
+                    tiles[ns, we].update(ns, we, elapsedMillis);
                 }
             }
         }
@@ -51,10 +51,10 @@ namespace flatsim
             {
                 for (int we = 0; we < tiles.GetLength(1); we++)
                 {
-                    tiles[ns, we].draw(TilePart.LEFTFACE, perspective, spriteBatch);
-                    tiles[ns, we].draw(TilePart.RIGHTFACE, perspective, spriteBatch);
-                    tiles[ns, we].draw(TilePart.SURFACE, perspective, spriteBatch);
-                    tiles[ns, we].draw(TilePart.STRUCTURE, perspective, spriteBatch);
+                    tiles[ns, we].draw(ns, we, TilePart.LEFTFACE, perspective, spriteBatch);
+                    tiles[ns, we].draw(ns, we, TilePart.RIGHTFACE, perspective, spriteBatch);
+                    tiles[ns, we].draw(ns, we, TilePart.SURFACE, perspective, spriteBatch);
+                    tiles[ns, we].draw(ns, we, TilePart.STRUCTURE, perspective, spriteBatch);
                 }
             }
         }

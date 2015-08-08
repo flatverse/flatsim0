@@ -7,19 +7,14 @@ namespace flatsim
 {
     class Tile
     {
-        public int coordNS, coordWE;
-
         List<TileSection> tileSections;
 
-        public Tile(int coordNS, int coordWE)
+        public Tile()
         {
-            this.coordNS = coordNS;
-            this.coordWE = coordWE;
-
             tileSections = new List<TileSection>();
         }
 
-        public virtual void update(int timeElapsedMillis)
+        public virtual void update(int coordNS, int coordWE, int timeElapsedMillis)
         {
             foreach (TileSection tile in tileSections)
             {
@@ -27,7 +22,7 @@ namespace flatsim
             }
         }
 
-        public virtual void draw(TilePart tilePart, TilePerspective perspective, SpriteBatch spriteBatch)
+        public virtual void draw(int coordNS, int coordWE, TilePart tilePart, TilePerspective perspective, SpriteBatch spriteBatch)
         {
             foreach (TileSection tile in tileSections)
             {
