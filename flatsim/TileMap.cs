@@ -22,12 +22,13 @@ namespace flatsim
          */
         Tile[,] tiles;
 
-        public TileMap(int tilesNS, int tilesWE)
+        public TileMap(TilePerspective perspective)
         {
-            tiles = new Tile[tilesNS, tilesWE];
-            for (int ns = 0; ns < tilesNS; ns++)
+            this.perspective = perspective;
+            tiles = new Tile[perspective.tilesNS, perspective.tilesWE];
+            for (int ns = 0; ns < perspective.tilesNS; ns++)
             {
-                for (int we = 0; we < tilesWE; we++)
+                for (int we = 0; we < perspective.tilesWE; we++)
                 {
                     tiles[ns, we] = new Tile();
                 }
@@ -57,6 +58,22 @@ namespace flatsim
                     tiles[ns, we].draw(ns, we, TilePart.STRUCTURE, perspective, spriteBatch);
                 }
             }
+        }
+
+        public Tile this[int ns, int we]
+        {
+            get { return tiles[ns, we]; }
+            set { tiles[ns, we] = value; }
+        }
+
+        public int getTilesNS()
+        {
+            return tiles.GetLength(0);
+        }
+
+        public int getTilesWE()
+        {
+            return tiles.GetLength(1);
         }
     }
 }

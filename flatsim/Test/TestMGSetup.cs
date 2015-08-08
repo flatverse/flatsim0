@@ -35,6 +35,8 @@ namespace flatsim
         public TileTexture baseLeft = new SimpleTileTexture();
         public TileTexture baseRight = new SimpleTileTexture();
         public TileTexture baseSurface = new SimpleTileTexture();
+        public TileDrawablePack basePack = new TextureTileDrawablePack();
+        public TileMap tileMap;
 
         /*
          */
@@ -47,8 +49,23 @@ namespace flatsim
             //testLocs.Add(new Vector2(200, 200));
 
             (baseLeft as SimpleTileTexture).leftFace = dbls["faceLeft1"];
+            (baseLeft as SimpleTileTexture).tileHeight = 1;
             (baseRight as SimpleTileTexture).rightFace = dbls["faceRight1"];
+            (baseRight as SimpleTileTexture).tileHeight = 1;
             (baseSurface as SimpleTileTexture).surface = dbls["grass1"];
+
+            (basePack as TextureTileDrawablePack).textures.Add(TilePart.LEFTFACE, baseLeft);
+            (basePack as TextureTileDrawablePack).textures.Add(TilePart.RIGHTFACE, baseRight);
+            (basePack as TextureTileDrawablePack).textures.Add(TilePart.SURFACE, baseSurface);
+
+            tileMap = new TileMap(new TilePerspective(128, 2, 2));
+            for (int ns = 0; ns < tileMap.getTilesNS(); ns++)
+            {
+                for (int we = 0; we < tileMap.getTilesWE(); we++)
+                {
+                    tileMap[ns, we].addTileSection(0, 1, basePack.clone());
+                }
+            }
         }
 
         public override void unloadContent()
@@ -62,9 +79,7 @@ namespace flatsim
             //{
             //    dbl.update();
             //}
-            baseLeft.update(TilePart.LEFTFACE, gameTime.ElapsedGameTime.Milliseconds);
-            baseRight.update(TilePart.RIGHTFACE, gameTime.ElapsedGameTime.Milliseconds);
-            baseRight.update(TilePart.RIGHTFACE, gameTime.ElapsedGameTime.Milliseconds);
+            tileMap.update(gameTime.ElapsedGameTime.Milliseconds);
         }
 
         public override void draw(GameTime gameTime)
@@ -76,6 +91,7 @@ namespace flatsim
             //{
             //    testAssets[i].simpleDraw(spriteBatch, testLocs[i]);
             //}
+            tileMap.draw(spriteBatch);
 
             spriteBatch.End();
         }

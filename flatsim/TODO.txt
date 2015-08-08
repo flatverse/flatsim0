@@ -1,4 +1,5 @@
-﻿* have some sort of draw mode system for easy map wide "swapping" of drawable packs
+﻿* !!! change anything with a dictionary that uses TilePart as the key to actually use an int as the key!!!
+* have some sort of draw mode system for easy map wide "swapping" of drawable packs
 * create a TileMap
 
 Drawable
@@ -13,7 +14,7 @@ TileMap
 * update and especially draw based on direction facing
 
 Tile
-* add way to add/remove tile sections.
+* add way to remove tile sections.
 
 TileSection
 * add support for an onUpdate callback

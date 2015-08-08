@@ -12,8 +12,8 @@ namespace flatsim
         public Drawable leftFace;
         public Drawable rightFace;
 
-        float heightOffset = 0;
-        float tileHeight = 0;
+        public float heightOffset = 0;
+        public float tileHeight = 0;
 
         public SimpleTileTexture()
         {
@@ -61,14 +61,14 @@ namespace flatsim
                     {
                         break;
                     }
-                    surface.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
+                    leftFace.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
                     break;
                 case TilePart.RIGHTFACE:
                     if (rightFace == null)
                     {
                         break;
                     }
-                    surface.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
+                    rightFace.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
                     break;
             }
         }

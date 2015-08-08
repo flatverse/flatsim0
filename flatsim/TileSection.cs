@@ -6,10 +6,10 @@ namespace flatsim
 {
     public class TileSection
     {
-        float minHeight = 0;
-        float maxHeight = 0;
+        public float minHeight = 0;
+        public float maxHeight = 0;
        
-        TileDrawablePack drawablePack;
+        public TileDrawablePack drawablePack;
 
         public TileSection(TileDrawablePack drawablePack)
         {

@@ -28,41 +28,69 @@ namespace flatsim
 
         public override void drawStructure(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
+            if (textures.ContainsKey(TilePart.STRUCTURE)) {
+                return;
+            }
             textures[TilePart.STRUCTURE].draw(drawInfo, spriteBatch);
         }
 
         public override void drawSurface(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
+            if (textures.ContainsKey(TilePart.SURFACE)) {
+                return;
+            }
             textures[TilePart.SURFACE].draw(drawInfo, spriteBatch);
         }
 
         public override void drawLeftFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
+            if (textures.ContainsKey(TilePart.LEFTFACE)) {
+                return;
+            }
             textures[TilePart.LEFTFACE].draw(drawInfo, spriteBatch);
         }
 
         public override void drawRightFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
+            if (textures.ContainsKey(TilePart.RIGHTFACE)) {
+                return;
+            }
             textures[TilePart.RIGHTFACE].draw(drawInfo, spriteBatch);
         }
 
         public override float[] getHeightRangeStructure(float minHeight, float maxHeight)
         {
+            if (!textures.ContainsKey(TilePart.STRUCTURE))
+            {
+                return new float[0];
+            }
             return textures[TilePart.STRUCTURE].getHeightRange(minHeight, maxHeight);
         }
 
         public override float[] getHeightRangeSurface(float minHeight, float maxHeight)
         {
+            if (!textures.ContainsKey(TilePart.SURFACE))
+            {
+                return new float[0];
+            }
             return textures[TilePart.SURFACE].getHeightRange(minHeight, maxHeight);
         }
         
         public override float[] getHeightRangeLeftFace(float minHeight, float maxHeight)
         {
+            if (!textures.ContainsKey(TilePart.LEFTFACE))
+            {
+                return new float[0];
+            }
             return textures[TilePart.LEFTFACE].getHeightRange(minHeight, maxHeight);
         }
         
         public override float[] getHeightRangeRightFace(float minHeight, float maxHeight)
         {
+            if (!textures.ContainsKey(TilePart.RIGHTFACE))
+            {
+                return new float[0];
+            }
             return textures[TilePart.RIGHTFACE].getHeightRange(minHeight, maxHeight);
         }
 
