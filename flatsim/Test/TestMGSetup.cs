@@ -28,9 +28,13 @@ namespace flatsim
         public Dictionary<string, FVImage> textures = new Dictionary<string,FVImage>();
         public Dictionary<string, Drawable> dbls = new Dictionary<string,Drawable>();
 
-        public List<Drawable> testAssets = new List<Drawable>();
-        public List<Vector2> testLocs = new List<Vector2>();
+        //public List<Drawable> testAssets = new List<Drawable>();
+        //public List<Vector2> testLocs = new List<Vector2>();
         public Color clearColor = Color.DarkCyan;
+
+        public TileTexture baseLeft = new SimpleTileTexture();
+        public TileTexture baseRight = new SimpleTileTexture();
+        public TileTexture baseSurface = new SimpleTileTexture();
 
         /*
          */
@@ -38,9 +42,13 @@ namespace flatsim
         {
             initAssets();
 
-            TextureDrawable dbl = ((TextureDrawable)dbls["blueFramedWindow"].clone());
-            testAssets.Add(dbl);
-            testLocs.Add(new Vector2(200, 200));
+            //TextureDrawable dbl = ((TextureDrawable)dbls["blueFramedWindow"].clone());
+            //testAssets.Add(dbl);
+            //testLocs.Add(new Vector2(200, 200));
+
+            (baseLeft as SimpleTileTexture).leftFace = dbls["faceLeft1"];
+            (baseRight as SimpleTileTexture).rightFace = dbls["faceRight1"];
+            (baseSurface as SimpleTileTexture).surface = dbls["grass1"];
         }
 
         public override void unloadContent()
@@ -50,10 +58,13 @@ namespace flatsim
 
         public override void update(GameTime gameTime)
         {
-            foreach (Drawable dbl in testAssets)
-            {
-                dbl.update();
-            }
+            //foreach (Drawable dbl in testAssets)
+            //{
+            //    dbl.update();
+            //}
+            baseLeft.update(TilePart.LEFTFACE, gameTime.ElapsedGameTime.Milliseconds);
+            baseRight.update(TilePart.RIGHTFACE, gameTime.ElapsedGameTime.Milliseconds);
+            baseRight.update(TilePart.RIGHTFACE, gameTime.ElapsedGameTime.Milliseconds);
         }
 
         public override void draw(GameTime gameTime)
@@ -61,10 +72,10 @@ namespace flatsim
             graphics.GraphicsDevice.Clear(clearColor);
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
             
-            for(int i = 0; i < testAssets.Count; i++)
-            {
-                testAssets[i].simpleDraw(spriteBatch, testLocs[i]);
-            }
+            //for(int i = 0; i < testAssets.Count; i++)
+            //{
+            //    testAssets[i].simpleDraw(spriteBatch, testLocs[i]);
+            //}
 
             spriteBatch.End();
         }

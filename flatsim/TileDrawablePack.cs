@@ -53,5 +53,7 @@ namespace flatsim
 
             return new float[] {minHeight, maxHeight};
         }
+
+        public abstract TileDrawablePack clone();
     }
 }

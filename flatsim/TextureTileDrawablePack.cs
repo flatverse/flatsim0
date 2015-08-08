@@ -19,7 +19,10 @@ namespace flatsim
             foreach (string sPart in Enum.GetNames(typeof(TilePart)))
             {
                 TilePart part = (TilePart)Enum.Parse(typeof(TilePart), sPart);
-                textures[part].update(part, ellapsedMillis);
+                if (textures.ContainsKey(part))
+                {
+                    textures[part].update(part, ellapsedMillis);
+                }
             }
         }
 
@@ -62,6 +65,19 @@ namespace flatsim
         {
             return textures[TilePart.RIGHTFACE].getHeightRange(minHeight, maxHeight);
         }
-        
+
+        public override TileDrawablePack clone()
+        {
+            TextureTileDrawablePack newPack = new TextureTileDrawablePack();
+            foreach (string sPart in Enum.GetNames(typeof(TilePart)))
+            {
+                TilePart part = (TilePart)Enum.Parse(typeof(TilePart), sPart);
+                if (textures.ContainsKey(part))
+                {
+                    newPack.textures.Add(part, textures[part].clone());
+                }
+            }
+            return newPack;
+        }
     }
 }

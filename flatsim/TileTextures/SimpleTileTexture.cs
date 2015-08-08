@@ -39,7 +39,7 @@ namespace flatsim
             }
         }
 
-        public void draw(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
+        public virtual void draw(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
             switch (drawInfo.tilePart)
             {
@@ -50,18 +50,30 @@ namespace flatsim
                     }
                     break;
                 case TilePart.SURFACE:
+                    if (surface == null)
+                    {
+                        break;
+                    }
                     surface.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
                     break;
                 case TilePart.LEFTFACE:
+                    if (leftFace == null)
+                    {
+                        break;
+                    }
                     surface.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
                     break;
                 case TilePart.RIGHTFACE:
+                    if (rightFace == null)
+                    {
+                        break;
+                    }
                     surface.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
                     break;
             }
         }
 
-        public float[] getHeightRange(float minHeight, float maxHeight)
+        public virtual float[] getHeightRange(float minHeight, float maxHeight)
         {
             if (tileHeight == 0)
             {
@@ -79,6 +91,30 @@ namespace flatsim
                 }
                 return heights;
             }
+        }
+
+        public virtual TileTexture clone()
+        {
+            SimpleTileTexture newTex = new SimpleTileTexture();
+            newTex.tileHeight = tileHeight;
+            newTex.heightOffset = heightOffset;
+            foreach (Drawable dbl in structures)
+            {
+                newTex.structures.Add(dbl.clone());
+            }
+            if (leftFace != null)
+            {
+                newTex.leftFace = leftFace.clone();
+            }
+            if (rightFace != null)
+            {
+                newTex.rightFace = rightFace.clone();
+            }
+            if (surface != null)
+            {
+                newTex.surface = surface.clone();
+            }
+            return newTex;
         }
 
         /*
