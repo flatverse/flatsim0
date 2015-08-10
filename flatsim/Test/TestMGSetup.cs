@@ -53,7 +53,7 @@ namespace flatsim
             texPack.textures.Add(TilePart.RIGHTFACE, baseRight);
             texPack.textures.Add(TilePart.SURFACE, baseSurface);
 
-            tileMap = new TileMap(new TilePerspective(128, 2, 2));
+            tileMap = new TileMap(new TilePerspective(128, 4, 3));
             tileMap.perspective.position.X += 200;
             tileMap.perspective.position.Y += 200;
             //tileMap.drawLeftface = false;
@@ -62,22 +62,25 @@ namespace flatsim
             {
                 for (int we = 0; we < tileMap.getTilesWE(); we++)
                 {
-                    tileMap[ns, we].addTileSection(0, 1, basePack.clone());
+                    tileMap[ns, we].addTileSection(0, 0, basePack.clone());
                 }
             }
 
-            for (int ns = 0; ns < tileMap.getTilesNS(); ns++)
-            {
-                for (int we = 0; we < tileMap.getTilesWE(); we++)
-                {
-                    if (ns == 0 && we == 0) continue;
+            tileMap[0, 0].getTileSection(0).maxHeight = 2;
+            tileMap[2, 1].getTileSection(0).maxHeight = 1;
 
-                    texPack = tileMap[ns, we].getTileSection(0).drawablePack as TextureTileDrawablePack;
-                    texPack.textures.Remove(TilePart.LEFTFACE);
-                    texPack.textures.Remove(TilePart.RIGHTFACE);
-                    (texPack.textures[TilePart.SURFACE] as SimpleTileTexture).surface.color = Color.Red;
-                }
-            }
+            //for (int ns = 0; ns < tileMap.getTilesNS(); ns++)
+            //{
+            //    for (int we = 0; we < tileMap.getTilesWE(); we++)
+            //    {
+            //        if (ns == 0 && we == 0) continue;
+
+            //        texPack = tileMap[ns, we].getTileSection(0).drawablePack as TextureTileDrawablePack;
+            //        texPack.textures.Remove(TilePart.LEFTFACE);
+            //        texPack.textures.Remove(TilePart.RIGHTFACE);
+            //        (texPack.textures[TilePart.SURFACE] as SimpleTileTexture).surface.color = Color.Red;
+            //    }
+            //}
 
         }
 

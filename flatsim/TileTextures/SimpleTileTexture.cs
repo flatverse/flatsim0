@@ -46,7 +46,7 @@ namespace flatsim
                 case TilePart.STRUCTURE:
                     foreach (Drawable structure in structures)
                     {
-                        structure.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
+                        adjustedDepthDraw(structure, drawInfo, spriteBatch);
                     }
                     break;
                 case TilePart.SURFACE:
@@ -54,23 +54,31 @@ namespace flatsim
                     {
                         break;
                     }
-                    surface.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
+                    adjustedDepthDraw(surface, drawInfo, spriteBatch);
                     break;
                 case TilePart.LEFTFACE:
                     if (leftFace == null)
                     {
                         break;
                     }
-                    leftFace.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
+                    adjustedDepthDraw(leftFace, drawInfo, spriteBatch);
                     break;
                 case TilePart.RIGHTFACE:
                     if (rightFace == null)
                     {
                         break;
                     }
-                    rightFace.draw(spriteBatch, drawInfo.pos, drawInfo.scale, Color.White, 0);
+                    adjustedDepthDraw(rightFace, drawInfo, spriteBatch);
                     break;
             }
+        }
+
+        protected virtual void adjustedDepthDraw(Drawable dbl, TilePerspective.TileDrawInfo tdi, SpriteBatch sb)
+        {
+            float origDepth = dbl.depth;
+            dbl.depth = tdi.getAdjustedDepth(origDepth);
+            dbl.draw(sb, tdi.pos, tdi.scale, Color.White, 0);
+            dbl.depth = origDepth;
         }
 
         public virtual float[] getHeightRange(float minHeight, float maxHeight)
@@ -83,11 +91,11 @@ namespace flatsim
             {
                 int tileCnt = (int)Math.Ceiling((maxHeight - minHeight) / tileHeight);
                 float[] heights = new float[tileCnt];
-                float curHeight = maxHeight - (tileHeight / 2);
+                float curHeight = maxHeight - 1;
                 for (int i = 0; i < tileCnt; i++)
                 {
                     heights[i] = curHeight;
-                    curHeight += tileHeight;
+                    curHeight -= tileHeight;
                 }
                 return heights;
             }

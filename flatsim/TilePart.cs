@@ -32,9 +32,9 @@ namespace flatsim
                 case TilePart.STRUCTURE:
                     return -0.5f;
                 case TilePart.LEFTFACE:
-                    return 0.5f;
+                    return 0f;
                 case TilePart.RIGHTFACE:
-                    return 0.5f;
+                    return 0f;
                 default:
                     return 0;
             }

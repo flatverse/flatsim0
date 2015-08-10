@@ -6,6 +6,9 @@ Drawable
 TilePerspective
 * Add support for slopes through some sort of add on class
 
+TilePart
+* remove verticalTileOffset and maybe remove horizontalTileOffset
+
 TileMap
 * add settings that make it so only tiles on or close to the screen get updated/drawn
 * WAY DOWN THE LINE - it would be cool if TileMaps could aggregate other TileMaps by using pre-rendered textures.

@@ -113,7 +113,7 @@ namespace flatsim
             yAdjust += part.verticalTileOffset() * tilePixelAltitudeUnit; // this is a bit heavy handed might want to remove
 
             Vector2 pxPos = new Vector2(position.X + xAdjust, position.Y + yAdjust);
-            pxPos.Y += height * tilePixelAltitudeUnit;
+            pxPos.Y -= height * tilePixelAltitudeUnit;
             return pxPos;
         }
 
