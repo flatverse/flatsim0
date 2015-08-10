@@ -28,9 +28,7 @@ namespace flatsim
         public Dictionary<string, FVImage> textures = new Dictionary<string,FVImage>();
         public Dictionary<string, Drawable> dbls = new Dictionary<string,Drawable>();
 
-        //public List<Drawable> testAssets = new List<Drawable>();
-        //public List<Vector2> testLocs = new List<Vector2>();
-        public Color clearColor = Color.DarkCyan;
+        public Color clearColor = Color.FromNonPremultiplied(20, 20, 20, 255);
 
         public TileTexture baseLeft = new SimpleTileTexture();
         public TileTexture baseRight = new SimpleTileTexture();
@@ -44,23 +42,22 @@ namespace flatsim
         {
             initAssets();
 
-            //TextureDrawable dbl = ((TextureDrawable)dbls["blueFramedWindow"].clone());
-            //testAssets.Add(dbl);
-            //testLocs.Add(new Vector2(200, 200));
-
             (baseLeft as SimpleTileTexture).leftFace = dbls["faceLeft1"];
             (baseLeft as SimpleTileTexture).tileHeight = 1;
             (baseRight as SimpleTileTexture).rightFace = dbls["faceRight1"];
             (baseRight as SimpleTileTexture).tileHeight = 1;
             (baseSurface as SimpleTileTexture).surface = dbls["grass1"];
 
-            (basePack as TextureTileDrawablePack).textures.Add(TilePart.LEFTFACE, baseLeft);
-            (basePack as TextureTileDrawablePack).textures.Add(TilePart.RIGHTFACE, baseRight);
-            (basePack as TextureTileDrawablePack).textures.Add(TilePart.SURFACE, baseSurface);
+            TextureTileDrawablePack texPack = basePack as TextureTileDrawablePack;
+            texPack.textures.Add(TilePart.LEFTFACE, baseLeft);
+            texPack.textures.Add(TilePart.RIGHTFACE, baseRight);
+            texPack.textures.Add(TilePart.SURFACE, baseSurface);
 
             tileMap = new TileMap(new TilePerspective(128, 2, 2));
             tileMap.perspective.position.X += 200;
             tileMap.perspective.position.Y += 200;
+            //tileMap.drawLeftface = false;
+            //tileMap.drawRightface = false;
             for (int ns = 0; ns < tileMap.getTilesNS(); ns++)
             {
                 for (int we = 0; we < tileMap.getTilesWE(); we++)
@@ -77,22 +74,14 @@ namespace flatsim
 
         public override void update(GameTime gameTime)
         {
-            //foreach (Drawable dbl in testAssets)
-            //{
-            //    dbl.update();
-            //}
             tileMap.update(gameTime.ElapsedGameTime.Milliseconds);
         }
 
         public override void draw(GameTime gameTime)
         {
             graphics.GraphicsDevice.Clear(clearColor);
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
-            
-            //for(int i = 0; i < testAssets.Count; i++)
-            //{
-            //    testAssets[i].simpleDraw(spriteBatch, testLocs[i]);
-            //}
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+
             tileMap.draw(spriteBatch);
 
             spriteBatch.End();

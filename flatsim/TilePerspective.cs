@@ -82,7 +82,7 @@ namespace flatsim
             Direction facing = getDirectionFacing();
             Vector2 pxPos = getTilePixelPosition(coordNS, coordWE, height, part);
             Vector2 scale = getScale();
-            float depth = getTileDepth(0, coordNS, coordWE, part);
+            float depth = getTileDepth(depthShift, coordNS, coordWE, part);
             int digitCount = getDepthDigitsNeeded(depthShift);
             TileDrawInfo tdi = new TileDrawInfo(facing, part, pxPos, scale, depth, digitCount);
 
@@ -127,11 +127,12 @@ namespace flatsim
             int digitsNeeded = getDepthDigitsNeeded(extraDigits);
 
             Tuple<float, float> dist = getTileDistance(getTopCoord(), new Vector2(coordNS, coordWE));
-            int drawOrder = (int)dist.Item2 * getTilesTLtoBR();
+            int drawOrder = -(int)dist.Item2 * getTilesBLtoTR();
             drawOrder += (int)dist.Item1;
 
             float depth = Utils.shiftRight(drawOrder, digitsNeeded - 1);
-            depth += Utils.shiftRight((int)part, digitsNeeded);
+            float partDepth = Utils.shiftRight((int)part, digitsNeeded);
+            depth += partDepth;
             
             return depth;
         }
