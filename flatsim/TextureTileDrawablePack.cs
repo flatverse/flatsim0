@@ -28,7 +28,7 @@ namespace flatsim
 
         public override void drawStructure(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
-            if (textures.ContainsKey(TilePart.STRUCTURE)) {
+            if (!textures.ContainsKey(TilePart.STRUCTURE)) {
                 return;
             }
             textures[TilePart.STRUCTURE].draw(drawInfo, spriteBatch);
@@ -36,7 +36,7 @@ namespace flatsim
 
         public override void drawSurface(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
-            if (textures.ContainsKey(TilePart.SURFACE)) {
+            if (!textures.ContainsKey(TilePart.SURFACE)) {
                 return;
             }
             textures[TilePart.SURFACE].draw(drawInfo, spriteBatch);
@@ -44,7 +44,7 @@ namespace flatsim
 
         public override void drawLeftFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
-            if (textures.ContainsKey(TilePart.LEFTFACE)) {
+            if (!textures.ContainsKey(TilePart.LEFTFACE)) {
                 return;
             }
             textures[TilePart.LEFTFACE].draw(drawInfo, spriteBatch);
@@ -52,7 +52,7 @@ namespace flatsim
 
         public override void drawRightFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
-            if (textures.ContainsKey(TilePart.RIGHTFACE)) {
+            if (!textures.ContainsKey(TilePart.RIGHTFACE)) {
                 return;
             }
             textures[TilePart.RIGHTFACE].draw(drawInfo, spriteBatch);

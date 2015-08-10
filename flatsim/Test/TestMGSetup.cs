@@ -59,6 +59,8 @@ namespace flatsim
             (basePack as TextureTileDrawablePack).textures.Add(TilePart.SURFACE, baseSurface);
 
             tileMap = new TileMap(new TilePerspective(128, 2, 2));
+            tileMap.perspective.position.X += 200;
+            tileMap.perspective.position.Y += 200;
             for (int ns = 0; ns < tileMap.getTilesNS(); ns++)
             {
                 for (int we = 0; we < tileMap.getTilesWE(); we++)
