@@ -8,6 +8,11 @@ namespace flatsim
     {
         public TilePerspective perspective;
 
+        public bool drawStructure = true;
+        public bool drawSurface = true;
+        public bool drawLeftface = true;
+        public bool drawRightface = true;
+
         /*
          *     /\   <--
          *    /\/\    |
@@ -52,10 +57,22 @@ namespace flatsim
             {
                 for (int we = 0; we < tiles.GetLength(1); we++)
                 {
-                    tiles[ns, we].draw(ns, we, TilePart.LEFTFACE, perspective, spriteBatch);
-                    tiles[ns, we].draw(ns, we, TilePart.RIGHTFACE, perspective, spriteBatch);
-                    tiles[ns, we].draw(ns, we, TilePart.SURFACE, perspective, spriteBatch);
-                    tiles[ns, we].draw(ns, we, TilePart.STRUCTURE, perspective, spriteBatch);
+                    if (drawLeftface)
+                    {
+                        tiles[ns, we].draw(ns, we, TilePart.LEFTFACE, perspective, spriteBatch);
+                    }
+                    if (drawRightface)
+                    {
+                        tiles[ns, we].draw(ns, we, TilePart.RIGHTFACE, perspective, spriteBatch);
+                    }
+                    if (drawSurface)
+                    {
+                        tiles[ns, we].draw(ns, we, TilePart.SURFACE, perspective, spriteBatch);
+                    }
+                    if (drawStructure)
+                    {
+                        tiles[ns, we].draw(ns, we, TilePart.STRUCTURE, perspective, spriteBatch);
+                    }
                 }
             }
         }
