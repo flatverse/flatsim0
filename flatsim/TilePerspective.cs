@@ -58,7 +58,7 @@ namespace flatsim
         public float tilePixelHeight;
         public float tilePixelAltitudeUnit;
         public int tilesNS, tilesWE;
-        public int depthShift = 1;
+        public int depthShift = 0;
 
         public Vector2 position;
         public Vector2 scale;
@@ -108,7 +108,7 @@ namespace flatsim
             float xAdjust = dist.Item1 + dist.Item2;
             xAdjust *= halfWidth;
             xAdjust += part.horizontalTileOffset() * tilePixelWidth;
-            float yAdjust = dist.Item2 + (-dist.Item1);
+            float yAdjust = -dist.Item2 + dist.Item1;
             yAdjust *= halfHeight;
             yAdjust += part.verticalTileOffset() * tilePixelAltitudeUnit; // this is a bit heavy handed might want to remove
 
@@ -152,7 +152,7 @@ namespace flatsim
             // TODO figure out if we need to do something like this
             //if (facing == Direction.WESTNORTH || facing == Direction.EASTSOUTH)
             // else
-            return new Vector2((float)tilesNS / 2.0f, (float)tilesWE / 2.0f);
+            return new Vector2(((float)tilesNS / 2.0f) - 0.5f, ((float)tilesWE / 2.0f) - 0.5f);
         }
 
         public virtual Vector2 getTopCoord()

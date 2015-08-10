@@ -30,17 +30,24 @@ namespace flatsim
             }
         }
 
-        public virtual void addTileSection(TileSection section)
+        public virtual int addTileSection(TileSection section)
         {
+            int ix = tileSections.Count;
             tileSections.Add(section);
+            return ix;
         }
 
-        public virtual void addTileSection(int minHeight, int maxHeight, TileDrawablePack dblPack)
+        public virtual int addTileSection(int minHeight, int maxHeight, TileDrawablePack dblPack)
         {
             TileSection newTS = new TileSection(dblPack);
             newTS.minHeight = minHeight;
             newTS.maxHeight = maxHeight;
-            addTileSection(newTS);
+            return addTileSection(newTS);
+        }
+
+        public virtual TileSection getTileSection(int index)
+        {
+            return tileSections[index];
         }
     }
 }

@@ -65,6 +65,20 @@ namespace flatsim
                     tileMap[ns, we].addTileSection(0, 1, basePack.clone());
                 }
             }
+
+            for (int ns = 0; ns < tileMap.getTilesNS(); ns++)
+            {
+                for (int we = 0; we < tileMap.getTilesWE(); we++)
+                {
+                    if (ns == 0 && we == 0) continue;
+
+                    texPack = tileMap[ns, we].getTileSection(0).drawablePack as TextureTileDrawablePack;
+                    texPack.textures.Remove(TilePart.LEFTFACE);
+                    texPack.textures.Remove(TilePart.RIGHTFACE);
+                    (texPack.textures[TilePart.SURFACE] as SimpleTileTexture).surface.color = Color.Red;
+                }
+            }
+
         }
 
         public override void unloadContent()
@@ -80,7 +94,7 @@ namespace flatsim
         public override void draw(GameTime gameTime)
         {
             graphics.GraphicsDevice.Clear(clearColor);
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
 
             tileMap.draw(spriteBatch);
 
