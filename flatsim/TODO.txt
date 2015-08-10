@@ -1,6 +1,4 @@
-﻿* !!! change anything with a dictionary that uses TilePart as the key to actually use an int as the key!!!
-* have some sort of draw mode system for easy map wide "swapping" of drawable packs
-* create a TileMap
+﻿* have some sort of draw mode system for easy map wide "swapping" of drawable packs
 
 Drawable
 * add a ellapsedMillis parameter to update.
