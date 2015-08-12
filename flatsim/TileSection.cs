@@ -18,7 +18,7 @@ namespace flatsim
 
         public virtual void update(int timeElapsedMillis)
         {
-            // TODO update drawablePack
+            drawablePack.update(timeElapsedMillis);
         }
 
         public virtual void draw(int coordNS, int coordWE, TilePart tilePart, TilePerspective perspective, SpriteBatch spriteBatch)
