@@ -49,6 +49,7 @@
     <Compile Include="Tile.cs" />
     <Compile Include="TileDrawInfo.cs" />
     <Compile Include="TileMap.cs" />
+    <Compile Include="TilePerspectiveAdjuster.cs" />
     <Compile Include="TileSection.cs" />
     <Compile Include="TileDrawablePack.cs" />
     <Compile Include="TilePart.cs" />

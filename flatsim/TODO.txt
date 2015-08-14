@@ -4,7 +4,11 @@ Drawable
 * add a ellapsedMillis parameter to update.
 
 TilePerspective
-* Add support for slopes through some sort of add on class
+* add in TilePerspectiveAdjusterManager
+* create a TilePerspectiveAdjuster for leftface and right face x and y coords
+* Add support for slopes through a TilePerspectiveAdjuster
+* account for scale in .getTilePixelPosition
+* make sure .getCenterCoord is correct
 
 TilePart
 * remove verticalTileOffset and maybe remove horizontalTileOffset
@@ -20,6 +24,5 @@ Tile
 TileSection
 * add support for an onUpdate callback
 
-TilePerspective
-* account for scale in .getTilePixelPosition
-* make sure .getCenterCoord is correct
+TilePerspectiveAdjusterManager
+* creat this it should aggregate TilePerspectiveAdjuster s
