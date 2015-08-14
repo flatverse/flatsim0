@@ -24,7 +24,7 @@ namespace flatsim
         public virtual void draw(int coordNS, int coordWE, TilePart tilePart, TilePerspective perspective, SpriteBatch spriteBatch)
         {
             float[] heights = drawablePack.getHeightRange(tilePart, minHeight, maxHeight);
-            TilePerspective.TileDrawInfo tdi;
+            TileDrawInfo tdi;
             foreach (float height in heights)
             {
                 tdi = perspective.getTileDrawInfo(coordNS, coordWE, height, tilePart);

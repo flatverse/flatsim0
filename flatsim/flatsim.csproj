@@ -47,6 +47,7 @@
     <Compile Include="Test\TestMGSetup.cs" />
     <Compile Include="TextureTileDrawablePack.cs" />
     <Compile Include="Tile.cs" />
+    <Compile Include="TileDrawInfo.cs" />
     <Compile Include="TileMap.cs" />
     <Compile Include="TileSection.cs" />
     <Compile Include="TileDrawablePack.cs" />

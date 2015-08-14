@@ -8,12 +8,12 @@ namespace flatsim
     {
         public abstract void update(int ellapsedMillis);
 
-        public abstract void drawStructure(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch);
-        public abstract void drawSurface(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch);
-        public abstract void drawLeftFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch);
-        public abstract void drawRightFace(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch);
+        public abstract void drawStructure(TileDrawInfo drawInfo, SpriteBatch spriteBatch);
+        public abstract void drawSurface(TileDrawInfo drawInfo, SpriteBatch spriteBatch);
+        public abstract void drawLeftFace(TileDrawInfo drawInfo, SpriteBatch spriteBatch);
+        public abstract void drawRightFace(TileDrawInfo drawInfo, SpriteBatch spriteBatch);
 
-        public virtual void draw(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
+        public virtual void draw(TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
             switch (drawInfo.tilePart)
             {

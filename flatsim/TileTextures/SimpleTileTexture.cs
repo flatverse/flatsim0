@@ -39,7 +39,7 @@ namespace flatsim
             }
         }
 
-        public virtual void draw(TilePerspective.TileDrawInfo drawInfo, SpriteBatch spriteBatch)
+        public virtual void draw(TileDrawInfo drawInfo, SpriteBatch spriteBatch)
         {
             switch (drawInfo.tilePart)
             {
@@ -73,7 +73,7 @@ namespace flatsim
             }
         }
 
-        protected virtual void adjustedDepthDraw(Drawable dbl, TilePerspective.TileDrawInfo tdi, SpriteBatch sb)
+        protected virtual void adjustedDepthDraw(Drawable dbl, TileDrawInfo tdi, SpriteBatch sb)
         {
             float origDepth = dbl.depth;
             dbl.depth = tdi.getAdjustedDepth(origDepth);
