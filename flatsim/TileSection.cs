@@ -27,7 +27,7 @@ namespace flatsim
             TileDrawInfo tdi;
             foreach (float height in heights)
             {
-                tdi = perspective.getTileDrawInfo(coordNS, coordWE, height, tilePart);
+                tdi = perspective.getTileDrawInfo(coordNS, coordWE, height, tilePart, null);
                 drawablePack.draw(tdi, spriteBatch);
             }
         }

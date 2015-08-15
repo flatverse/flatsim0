@@ -30,6 +30,8 @@ namespace flatsim
         public Vector2 scale;
         public Direction facing;
 
+        public TilePerspectiveAdjusterManager adjusters;
+
         public TilePerspective(float tilePixelWidth, int tilesNS, int tilesWE)
         {
             this.tilePixelWidth = tilePixelWidth;
@@ -41,9 +43,11 @@ namespace flatsim
             position = new Vector2(0, 0);
             scale = new Vector2(1, 1);
             facing = Direction.WESTNORTH;
+
+            adjusters = new TilePerspectiveAdjusterManager();
         }
 
-        public virtual TileDrawInfo getTileDrawInfo(int coordNS, int coordWE, float height, TilePart part)
+        public virtual TileDrawInfo getTileDrawInfo(int coordNS, int coordWE, float height, TilePart part, string slope)
         {
             Direction facing = getDirectionFacing();
             Vector2 pxPos = getTilePixelPosition(coordNS, coordWE, height, part);
@@ -52,7 +56,14 @@ namespace flatsim
             int digitCount = getDepthDigitsNeeded(depthShift);
             TileDrawInfo tdi = new TileDrawInfo(facing, part, pxPos, scale, depth, digitCount);
 
+            adjusters.adjust(tdi, coordNS, coordWE, height, part, slope);
+
             return tdi;
+        }
+
+        public virtual void addAdjuster(TilePerspectiveAdjuster adjuster)
+        {
+            adjusters.add(adjuster);
         }
 
         public virtual Direction getDirectionFacing()
