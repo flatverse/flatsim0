@@ -53,9 +53,13 @@ namespace flatsim
             texPack.textures.Add(TilePart.RIGHTFACE, baseRight);
             texPack.textures.Add(TilePart.SURFACE, baseSurface);
 
-            tileMap = new TileMap(new TilePerspective(128, 4, 3));
-            tileMap.perspective.position.X += 200;
-            tileMap.perspective.position.Y += 200;
+            TilePerspective persp = new TilePerspective(128, 4, 3);
+            persp.addAdjuster(new TileFaceAdjuster(0.1f));
+            persp.initAdjusters();
+
+            tileMap = new TileMap(persp);
+            persp.position.X += 200;
+            persp.position.Y += 200;
             //tileMap.drawLeftface = false;
             //tileMap.drawRightface = false;
             for (int ns = 0; ns < tileMap.getTilesNS(); ns++)

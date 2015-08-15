@@ -15,14 +15,30 @@ namespace flatsim
             sortedList = new SortedList<float, List<TilePerspectiveAdjuster>>(new Comparer());
         }
 
+        public virtual void init(TilePerspective perspective)
+        {
+            foreach (KeyValuePair<float, List<TilePerspectiveAdjuster>> priorToAdjList in sortedList)
+            {
+                foreach (TilePerspectiveAdjuster adj in priorToAdjList.Value)
+                {
+                    adj.init(perspective);
+                }
+            }
+        }
+
         public virtual void add(TilePerspectiveAdjuster adjuster) {
             float prior = adjuster.getPriority();
             List<TilePerspectiveAdjuster> list;
             if (!sortedList.TryGetValue(prior, out list))
             {
                 list = new List<TilePerspectiveAdjuster>();
+                list.Add(adjuster);
+                sortedList.Add(prior, list);
             }
-            list.Add(adjuster);
+            else
+            {
+                list.Add(adjuster);
+            }
         }
 
         public virtual void adjust(TileDrawInfo tileDrawInfo, int coordNS, int coordWE, float height, TilePart part, string slope)

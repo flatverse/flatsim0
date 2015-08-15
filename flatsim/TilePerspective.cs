@@ -47,6 +47,11 @@ namespace flatsim
             adjusters = new TilePerspectiveAdjusterManager();
         }
 
+        public virtual void initAdjusters()
+        {
+            adjusters.init(this);
+        }
+
         public virtual TileDrawInfo getTileDrawInfo(int coordNS, int coordWE, float height, TilePart part, string slope)
         {
             Direction facing = getDirectionFacing();
@@ -84,7 +89,6 @@ namespace flatsim
             // item2 is rel. tile coord bottom left to top right
             float xAdjust = dist.Item1 + dist.Item2;
             xAdjust *= halfWidth;
-            xAdjust += part.horizontalTileOffset() * tilePixelWidth;
             float yAdjust = -dist.Item2 + dist.Item1;
             yAdjust *= halfHeight;
             yAdjust += part.verticalTileOffset() * tilePixelAltitudeUnit; // this is a bit heavy handed might want to remove

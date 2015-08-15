@@ -12,19 +12,6 @@ namespace flatsim
 
     public static class TilePartExtension
     {
-        public static float horizontalTileOffset(this TilePart tp)
-        {
-            switch (tp)
-            {
-                case TilePart.LEFTFACE:
-                    return -0.25f;
-                case TilePart.RIGHTFACE:
-                    return 0.25f;
-                default:
-                    return 0;
-            }
-        }
-
         public static float verticalTileOffset(this TilePart tp)
         {
             switch (tp)

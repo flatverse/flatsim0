@@ -48,6 +48,7 @@
     <Compile Include="TextureTileDrawablePack.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="TileDrawInfo.cs" />
+    <Compile Include="TileFaceAdjuster.cs" />
     <Compile Include="TileMap.cs" />
     <Compile Include="TilePerspectiveAdjuster.cs" />
     <Compile Include="TilePerspectiveAdjusterManager.cs" />
