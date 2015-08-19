@@ -59,9 +59,9 @@ namespace flatsim
             Vector2 scale = getScale();
             float depth = getTileDepth(depthShift, coordNS, coordWE, part);
             int digitCount = getDepthDigitsNeeded(depthShift);
-            TileDrawInfo tdi = new TileDrawInfo(facing, part, pxPos, scale, depth, digitCount);
+            TileDrawInfo tdi = new TileDrawInfo(coordNS, coordWE, height, facing, part, slope, pxPos, scale, depth, digitCount);
 
-            adjusters.adjust(tdi, coordNS, coordWE, height, part, slope);
+            adjusters.adjust(tdi);
 
             return tdi;
         }

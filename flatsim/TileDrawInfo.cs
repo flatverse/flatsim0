@@ -5,17 +5,24 @@ namespace flatsim
 {
     public class TileDrawInfo
     {
+        public int coordNS, coordWE;
+        public float baseHeight;
         public Direction facing;
         public TilePart tilePart;
+        public string slope;
         public Vector2 pos;
         public Vector2 scale;
         public float depth;
         public int depthDigits;
 
-        public TileDrawInfo(Direction facing, TilePart tilePart, Vector2 pos, Vector2 scale, float depth, int depthDigits)
+        public TileDrawInfo(int coordNS, int coordWE, float baseHeight, Direction facing, TilePart tilePart, string slope, Vector2 pos, Vector2 scale, float depth, int depthDigits)
         {
+            this.coordNS = coordNS;
+            this.coordWE = coordWE;
+            this.baseHeight = baseHeight;
             this.facing = facing;
             this.tilePart = tilePart;
+            this.slope = slope;
             this.pos = pos;
             this.scale = scale;
             this.depth = depth;

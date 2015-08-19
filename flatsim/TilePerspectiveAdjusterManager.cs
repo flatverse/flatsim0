@@ -41,13 +41,13 @@ namespace flatsim
             }
         }
 
-        public virtual void adjust(TileDrawInfo tileDrawInfo, int coordNS, int coordWE, float height, TilePart part, string slope)
+        public virtual void adjust(TileDrawInfo tileDrawInfo)
         {
             foreach (KeyValuePair<float, List<TilePerspectiveAdjuster>> priorToAdjList in sortedList)
             {
                 foreach (TilePerspectiveAdjuster adj in priorToAdjList.Value)
                 {
-                    adj.adjust(tileDrawInfo, coordNS, coordWE, height, part, slope);
+                    adj.adjust(tileDrawInfo);
                 }
             }
         }

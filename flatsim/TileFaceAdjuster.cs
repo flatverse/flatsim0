@@ -26,14 +26,14 @@ namespace flatsim
             return priority;
         }
 
-        public virtual void adjust(TileDrawInfo drawInfo, int coordNS, int coordWE, float height, TilePart part, string slope)
+        public virtual void adjust(TileDrawInfo drawInfo)
         {
-            if (part == TilePart.LEFTFACE)
+            if (drawInfo.tilePart == TilePart.LEFTFACE)
             {
                 float pxShiftX = leftShift * perspective.tilePixelWidth;
                 drawInfo.pos.X += pxShiftX;
             }
-            else if (part == TilePart.RIGHTFACE)
+            else if (drawInfo.tilePart == TilePart.RIGHTFACE)
             {
                 float pxShiftX = rightShift * perspective.tilePixelWidth;
                 drawInfo.pos.X += pxShiftX;
