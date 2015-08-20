@@ -40,25 +40,25 @@
     <Compile Include="Drawable\DrawableCollection.cs" />
     <Compile Include="Drawable\FVImage.cs" />
     <Compile Include="Drawable\TextureDrawable.cs" />
-    <Compile Include="Game1.cs" />
-    <Compile Include="MonoGameInterface.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="MonoGameInterface\Game1.cs" />
+    <Compile Include="MonoGameInterface\MonoGameInterface.cs" />
+    <Compile Include="MonoGameInterface\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\TestMGSetup.cs" />
     <Compile Include="TileDrawablePack\TextureTileDrawablePack.cs" />
     <Compile Include="TileMap\Tile.cs" />
     <Compile Include="TileRendering\TileDrawInfo.cs" />
-    <Compile Include="TilePerspectiveAdjuster\TileFaceAdjuster.cs" />
+    <Compile Include="TileRendering\TilePerspectiveAdjuster\TileFaceAdjuster.cs" />
     <Compile Include="TileMap\TileMap.cs" />
-    <Compile Include="TilePerspectiveAdjuster\TilePerspectiveAdjuster.cs" />
-    <Compile Include="TilePerspectiveAdjuster\TilePerspectiveAdjusterManager.cs" />
+    <Compile Include="TileRendering\TilePerspectiveAdjuster\TilePerspectiveAdjuster.cs" />
+    <Compile Include="TileRendering\TilePerspectiveAdjuster\TilePerspectiveAdjusterManager.cs" />
     <Compile Include="TileMap\TileSection.cs" />
     <Compile Include="TileDrawablePack\TileDrawablePack.cs" />
     <Compile Include="TileRendering\TilePart.cs" />
     <Compile Include="TileRendering\TilePerspective.cs" />
     <Compile Include="TileTexture\TileTexture.cs" />
     <Compile Include="TileTexture\SimpleTileTexture.cs" />
-    <Compile Include="Utils.cs" />
+    <Compile Include="Misc\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
