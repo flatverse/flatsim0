@@ -33,5 +33,17 @@ namespace flatsim
                 drawablePack.draw(tdi, spriteBatch);
             }
         }
+
+        public float getHeight(float relativeTileX, float relativeTileY)
+        {
+            float height = maxHeight;
+
+            if (slopeInfo != null)
+            {
+                height += slopeInfo.getRelativeHeight(relativeTileX, relativeTileY);
+            }
+
+            return height;
+        }
     }
 }
