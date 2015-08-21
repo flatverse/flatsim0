@@ -11,6 +11,8 @@ namespace flatsim
        
         public TileDrawablePack drawablePack;
 
+        public TileSlopeInfo slopeInfo;
+
         public TileSection(TileDrawablePack drawablePack)
         {
             this.drawablePack = drawablePack;
@@ -27,7 +29,7 @@ namespace flatsim
             TileDrawInfo tdi;
             foreach (float height in heights)
             {
-                tdi = perspective.getTileDrawInfo(coordNS, coordWE, height, tilePart, null);
+                tdi = perspective.getTileDrawInfo(coordNS, coordWE, height, tilePart, slopeInfo);
                 drawablePack.draw(tdi, spriteBatch);
             }
         }
