@@ -8,31 +8,31 @@ namespace flatsim
     {
         public float priority = 0.1f;
 
-        private Dictionary<string, TilePerspectiveAdjuster> adjusters;
+        private Dictionary<int, TilePerspectiveAdjuster> adjusters;
 
         public TileSlopeAdjusterManager()
         {
-            adjusters = new Dictionary<string, TilePerspectiveAdjuster>();
+            adjusters = new Dictionary<int, TilePerspectiveAdjuster>();
         }
 
         public virtual void init(TilePerspective perspective)
         {
-            foreach (KeyValuePair<string, TilePerspectiveAdjuster> adjuster in adjusters)
+            foreach (KeyValuePair<int, TilePerspectiveAdjuster> adjuster in adjusters)
             {
                 adjuster.Value.init(perspective);
             }
         }
 
-        public virtual void add(string slope, TilePerspectiveAdjuster adjuster)
+        public virtual void add(int slopeTypeId, TilePerspectiveAdjuster adjuster)
         {
-            adjusters.Add(slope, adjuster);
+            adjusters.Add(slopeTypeId, adjuster);
         }
 
         public virtual void adjust(TileDrawInfo tileDrawInfo)
         {
-            if (adjusters.ContainsKey(tileDrawInfo.slope))
+            if (adjusters.ContainsKey(tileDrawInfo.slopeInfo.getSlopeTypeId()))
             {
-                adjusters[tileDrawInfo.slope].adjust(tileDrawInfo);
+                adjusters[tileDrawInfo.slopeInfo.getSlopeTypeId()].adjust(tileDrawInfo);
             }
         }
 

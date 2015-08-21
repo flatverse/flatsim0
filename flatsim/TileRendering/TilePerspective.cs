@@ -52,14 +52,14 @@ namespace flatsim
             adjusters.init(this);
         }
 
-        public virtual TileDrawInfo getTileDrawInfo(int coordNS, int coordWE, float height, TilePart part, string slope)
+        public virtual TileDrawInfo getTileDrawInfo(int coordNS, int coordWE, float height, TilePart part, TileSlopeInfo slopeInfo)
         {
             Direction facing = getDirectionFacing();
             Vector2 pxPos = getTilePixelPosition(coordNS, coordWE, height, part);
             Vector2 scale = getScale();
             float depth = getTileDepth(depthShift, coordNS, coordWE, part);
             int digitCount = getDepthDigitsNeeded(depthShift);
-            TileDrawInfo tdi = new TileDrawInfo(coordNS, coordWE, height, facing, part, slope, pxPos, scale, depth, digitCount);
+            TileDrawInfo tdi = new TileDrawInfo(coordNS, coordWE, height, facing, part, slopeInfo, pxPos, scale, depth, digitCount);
 
             adjusters.adjust(tdi);
 
