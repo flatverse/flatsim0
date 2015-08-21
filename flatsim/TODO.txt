@@ -1,10 +1,14 @@
 ﻿* have some sort of draw mode system for easy map wide "swapping" of drawable packs
 
+(slopes)
+* create a new namespace for 45 deg angle style slopes
+* Add support for slope height through a TilePerspectiveAdjuster
+* Add a new type of DrawablePack extender (or maybe just TileTexture) that handles slopes.
+
 Drawable
 * add a ellapsedMillis parameter to update.
 
 TilePerspective
-* Add support for slopes through a TilePerspectiveAdjuster
 * account for scale in .getTilePixelPosition
 * make sure .getCenterCoord is correct
 
