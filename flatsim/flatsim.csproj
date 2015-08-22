@@ -57,7 +57,7 @@
     <Compile Include="TileRendering\TilePart.cs" />
     <Compile Include="TileRendering\TilePerspective.cs" />
     <Compile Include="TileRendering\TilePerspectiveAdjuster\TileSlopeAdjusterManager.cs" />
-    <Compile Include="TileSlope\TileSlopeInfo.cs" />
+    <Compile Include="TileRendering\TileSlopeInfo.cs" />
     <Compile Include="TileTexture\TileTexture.cs" />
     <Compile Include="TileTexture\SimpleTileTexture.cs" />
     <Compile Include="Misc\Utils.cs" />
