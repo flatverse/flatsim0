@@ -10,9 +10,9 @@ TilePerspective
 * make sure .getCenterCoord is correct
 
 TileMap
+* update and especially draw based on direction facing
 * add settings that make it so only tiles on or close to the screen get updated/drawn
 * WAY DOWN THE LINE - it would be cool if TileMaps could aggregate other TileMaps by using pre-rendered textures.
-* update and especially draw based on direction facing
 
 Tile
 * add way to remove tile sections.
