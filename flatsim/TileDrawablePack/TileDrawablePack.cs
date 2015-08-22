@@ -6,7 +6,7 @@ namespace flatsim
 {
     public abstract class TileDrawablePack
     {
-        public abstract void update(int ellapsedMillis);
+        public abstract void update(int elapsedMillis);
 
         public abstract void drawStructure(TileDrawInfo drawInfo, SpriteBatch spriteBatch);
         public abstract void drawSurface(TileDrawInfo drawInfo, SpriteBatch spriteBatch);

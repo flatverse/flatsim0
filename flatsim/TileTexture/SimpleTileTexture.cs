@@ -23,19 +23,19 @@ namespace flatsim
             tileHeight = 0;
         }
 
-        public virtual void update(TilePart part, int ellapsedMillis)
+        public virtual void update(TilePart part, int elapsedMillis)
         {
             if (part == TilePart.STRUCTURE)
             {
                 foreach (Drawable dbl in structures)
                 {
-                    dbl.update();
+                    dbl.update(elapsedMillis);
                 }
             }
             else
             {
                 Drawable dbl = getDrawable(part, -1);
-                dbl.update();
+                dbl.update(elapsedMillis);
             }
         }
 

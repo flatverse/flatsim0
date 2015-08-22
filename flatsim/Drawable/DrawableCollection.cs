@@ -18,11 +18,11 @@ namespace flatsim
             this.dbls = dbls;
         }
 
-        public override void update()
+        public override void update(int elapsedMillis)
         {
             foreach (Drawable dbl in dbls)
             {
-                dbl.update();
+                dbl.update(elapsedMillis);
             }
         }
 

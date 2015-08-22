@@ -22,7 +22,7 @@ namespace flatsim
             visible = true;
         }
 
-        public abstract void update();
+        public abstract void update(int elapsedMillis);
         public abstract void draw(SpriteBatch spriteBatch, Vector2 pos, Vector2 scale, Color color, float lerpVal);
         public virtual void simpleDraw(SpriteBatch spriteBatch, Vector2 pos)
         {

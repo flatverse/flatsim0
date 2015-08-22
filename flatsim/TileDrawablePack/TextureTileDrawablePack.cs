@@ -14,14 +14,14 @@ namespace flatsim
             this.textures = new Dictionary<TilePart, TileTexture>();
         }
 
-        public override void update(int ellapsedMillis)
+        public override void update(int elapsedMillis)
         {
             foreach (string sPart in Enum.GetNames(typeof(TilePart)))
             {
                 TilePart part = (TilePart)Enum.Parse(typeof(TilePart), sPart);
                 if (textures.ContainsKey(part))
                 {
-                    textures[part].update(part, ellapsedMillis);
+                    textures[part].update(part, elapsedMillis);
                 }
             }
         }

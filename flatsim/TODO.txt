@@ -5,9 +5,6 @@
 * Add support for slope height through a TilePerspectiveAdjuster
 * Add a new type of DrawablePack extender (or maybe just TileTexture) that handles slopes.
 
-Drawable
-* add a ellapsedMillis parameter to update.
-
 TilePerspective
 * account for scale in .getTilePixelPosition
 * make sure .getCenterCoord is correct

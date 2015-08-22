@@ -14,7 +14,7 @@ namespace flatsim
             this.image = image;
         }
 
-        public override void update()
+        public override void update(int elapsedMillis)
         {}
 
         public override void draw(SpriteBatch spriteBatch, Vector2 pos, Vector2 scale, Color color, float lerpVal)
