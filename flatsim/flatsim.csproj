@@ -35,6 +35,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="SlopeImpls\Angle45\SlopeAdjuster45.cs" />
     <Compile Include="TileRendering\Direction.cs" />
     <Compile Include="Drawable\Drawable.cs" />
     <Compile Include="Drawable\DrawableCollection.cs" />
