@@ -29,6 +29,7 @@ namespace flatsim.SlopeImpls.Angle45
             float newHeight = drawInfo.slopeInfo.getRelativeHeight(0, 0);
             Vector2 newPos = perspective.getTilePixelPosition(drawInfo.coordNS, drawInfo.coordWE, newHeight, drawInfo.tilePart);
             drawInfo.pos = newPos;
+            drawInfo.adjustedHeight = newHeight;
         }
     }
 }

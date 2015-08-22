@@ -7,6 +7,7 @@ namespace flatsim
     {
         public int coordNS, coordWE;
         public float baseHeight;
+        public float adjustedHeight;
         public Direction facing;
         public TilePart tilePart;
         public TileSlopeInfo slopeInfo;
@@ -15,11 +16,12 @@ namespace flatsim
         public float depth;
         public int depthDigits;
 
-        public TileDrawInfo(int coordNS, int coordWE, float baseHeight, Direction facing, TilePart tilePart, TileSlopeInfo slopeInfo, Vector2 pos, Vector2 scale, float depth, int depthDigits)
+        public TileDrawInfo(int coordNS, int coordWE, float baseHeight, float adjustedHeight, Direction facing, TilePart tilePart, TileSlopeInfo slopeInfo, Vector2 pos, Vector2 scale, float depth, int depthDigits)
         {
             this.coordNS = coordNS;
             this.coordWE = coordWE;
             this.baseHeight = baseHeight;
+            this.adjustedHeight = adjustedHeight;
             this.facing = facing;
             this.tilePart = tilePart;
             this.slopeInfo = slopeInfo;
